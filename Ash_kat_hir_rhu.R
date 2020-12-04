@@ -210,3 +210,39 @@ CI_Rhu_order_evenness <- CI(Rhu._Evenness)
 CI_Ash_order_evenness <- CI(Ash._Evenness)
 CI_Hir_order_evenness <- CI(Hir._Evenness)
 CI_Kat_order_evenness <- CI(Kat._Evenness)
+
+
+#trying to create graphs with error bars below
+Eveneness <- read_csv("Emilia 2020/plots for poster/data/Eveneness.csv")
+
+Evenness_plot <- ggplot(data=Eveneness, aes(x=Eveneness$name, y=Eveneness$mean, group=1))+
+  geom_line()+
+  geom_point()+
+  xlab("Time")+
+  ylab("Pielou's Evenness")+
+  geom_errorbar( aes(x=Eveneness$name, ymin=Eveneness$low, ymax=Eveneness$high), width=0.5, colour="red", alpha=0.9, size=.5) +
+  ggtitle("Conodont Species Evenness Across the End Ordovician Extinction")+
+  ggsave("Evenness.png")
+
+Shannon_index <- read_csv("Emilia 2020/plots for poster/data/Shannon_index.csv")
+
+Shannon_index_plot <- ggplot(data=Shannon_index, aes(x=Shannon_index$name, y=Shannon_index$mean, group=1))+
+  geom_line()+
+  geom_point()+
+  xlab("Time")+
+  ylab("Shannon Index")+
+  geom_errorbar( aes(x=Shannon_index$name, ymin=Shannon_index$low, ymax=Shannon_index$high), width=0.5, colour="red", alpha=0.9, size=.5) +
+  ggtitle("Conodont Species Diversity using Shannon Index Across the End Ordovician Extinction")+
+  ggsave("Shannon_index.png")
+
+
+Simpson_index <- read_csv("Emilia 2020/plots for poster/data/Simpson_index.csv")
+
+Simpson_index_plot <- ggplot(data=Simpson_index, aes(x=Simpson_index$name, y=Simpson_index$mean, group=1))+
+  geom_line()+
+  geom_point()+
+  xlab("Time")+
+  ylab("Simpson Index")+
+  geom_errorbar( aes(x=Simpson_index$name, ymin=Simpson_index$low, ymax=Simpson_index$high), width=0.5, colour="red", alpha=0.9, size=.5) +
+  ggtitle("Conodont Species Diversity using Simpson Index Across the End Ordovician Extinction")+
+  ggsave("Simpson_index.png")
